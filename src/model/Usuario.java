@@ -13,7 +13,7 @@ public class Usuario {
     private List<DiarioAtividades> diarioAtividades;
     private List<DiarioRefeicoes> diarioRefeicoes;
 
-    public float calcularMetabolismoBasal() {
+    public void calcularMetabolismoBasal() {
         int idade = this.idade;
         String sexo = this.sexo;
 
@@ -23,20 +23,7 @@ public class Usuario {
         } else if (sexo.equals("F")) {
             coeficiente = -161;
         }
-        return (10 * peso) * 6.25F * altura - (5 * idade) + coeficiente;
-    }
-
-    public float calcularMacronutrientes() {
-        int idade = this.idade;
-        String sexo = this.sexo;
-
-        int coeficiente = 0;
-        if (sexo.equals('M')) {
-            coeficiente = 5;
-        } else if (sexo.equals("F")) {
-            coeficiente = -161;
-        }
-        return (10 * peso) * 6.25F * altura - (5 * idade) + coeficiente;
+        this.metabolismoBasal = (10 * peso) * 6.25F * altura - (5 * idade) + coeficiente;
     }
 
     public List<DiarioRefeicoes> consultarHistoricoRefeicoes() {

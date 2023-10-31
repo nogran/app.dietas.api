@@ -5,17 +5,10 @@ import java.util.List;
 
 public class DiarioRefeicoes {
 
-private List<Alimentos> alimentos;
+    private List<Alimento> alimentos;
 
-private LocalDateTime dateTime;
+    private LocalDateTime dateTime;
 
-private String tipoRefeicao;
-
-
-
-
-
-
-
-
+    private String tipoRefeicao;
+    
 }
