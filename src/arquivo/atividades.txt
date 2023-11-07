@@ -1,3 +1,4 @@
+teste,4.0
 testedfagd,5.5
 AlongamentoBaixa,2.3
 HidroginasticaModerada,5.5

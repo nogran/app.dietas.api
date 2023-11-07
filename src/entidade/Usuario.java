@@ -1,7 +1,8 @@
 package entidade;
 
+import enums.ObjetivoEnum;
+
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class Usuario {
@@ -11,11 +12,11 @@ public class Usuario {
     private float peso;
     private int altura;
     private String sexo;
-    private String objetivo;
+    private ObjetivoEnum objetivo;
     private float metabolismoBasal;
-    private List<DiarioExercicios> diarioExercicios;
+    private List<DiarioExercicio> diarioExercicios;
     private List<Refeicao> refeicoes;
-    private Date dataCriacao;
+    private LocalDate dataCriacao;
 
     public String getNome() {
         return nome;
@@ -65,11 +66,11 @@ public class Usuario {
         this.sexo = sexo;
     }
 
-    public String getObjetivo() {
+    public ObjetivoEnum getObjetivo() {
         return objetivo;
     }
 
-    public void setObjetivo(String objetivo) {
+    public void setObjetivo(ObjetivoEnum objetivo) {
         this.objetivo = objetivo;
     }
 
@@ -81,11 +82,11 @@ public class Usuario {
         this.metabolismoBasal = metabolismoBasal;
     }
 
-    public List<DiarioExercicios> getDiarioExercicios() {
+    public List<DiarioExercicio> getDiarioExercicios() {
         return diarioExercicios;
     }
 
-    public void setDiarioExercicios(List<DiarioExercicios> diarioExercicios) {
+    public void setDiarioExercicios(List<DiarioExercicio> diarioExercicios) {
         this.diarioExercicios = diarioExercicios;
     }
 
@@ -97,15 +98,15 @@ public class Usuario {
         this.refeicoes = refeicoes;
     }
 
-    public Date getDataCriacao() {
+    public LocalDate getDataCriacao() {
         return dataCriacao;
     }
 
-    public void setDataCriacao(Date dataCriacao) {
+    public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
 
-    public Usuario(String nome, String email, LocalDate dataNascimento, float peso, int altura, String sexo, String objetivo) {
+    public Usuario(String nome, String email, LocalDate dataNascimento, float peso, int altura, String sexo, ObjetivoEnum objetivo) {
         this.nome = nome;
         this.email = email;
         this.dataNascimento = dataNascimento;

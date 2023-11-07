@@ -1,10 +1,16 @@
 package negocio;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import entidade.Usuario;
+import enums.ObjetivoEnum;
+import exception.ErroConverterEntidadeException;
+import exception.ErroConverterJsonException;
+import exception.ErroLeituraArquivoException;
+import exception.ErroSalvarArquivoException;
 
 import java.io.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -15,38 +21,26 @@ public class UsuarioService {
     private static final String CAMINHO_ARQUIVO = "src/arquivo/usuarios.txt";
 
     public UsuarioService() throws ParseException {
-        this.usuariosCadastrados = new ArrayList<>();
-        this.carregarUsuarios();
+        List<Usuario> usuariosCadastrados1;
+        usuariosCadastrados1 = carregarUsuarios();
+        this.usuariosCadastrados = usuariosCadastrados1;
     }
 
-    private void carregarUsuarios() throws ParseException {
+    private static List<Usuario> carregarUsuarios() throws ParseException {
+        List<Usuario> usuarios = new ArrayList<>();
+
         try (BufferedReader br = new BufferedReader(new FileReader(CAMINHO_ARQUIVO))) {
             String linha;
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
             while ((linha = br.readLine()) != null) {
-                String[] partes = linha.split(",");
-                if (partes.length == 8) {
-                    String nome = partes[0];
-                    String email = partes[1];
-                    LocalDate dataNascimento = LocalDate.parse(partes[2]);
-                    float peso = Float.parseFloat(partes[3]);
-                    int altura = Integer.parseInt(partes[4]);
-                    String sexo = partes[5];
-                    String objetivo = partes[6];
-                    float metabolismoBasal = Float.parseFloat(partes[7]);
-
-                    Usuario usuario = new Usuario(nome, email, dataNascimento, peso, altura, sexo, objetivo);
-                    usuario.setMetabolismoBasal(metabolismoBasal);
-
-                    // Carregar outros atributos, como diarioAtividades e refeicoes, se necessário.
-
-                    usuariosCadastrados.add(usuario);
+                Usuario usuario = parseJsonParaUsuario(linha);
+                if (usuario != null) {
+                    usuarios.add(usuario);
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new ErroLeituraArquivoException("usuario.txt", e);
         }
+        return usuarios;
     }
 
     public void cadastrarUsuario(Scanner scanner) {
@@ -77,46 +71,40 @@ public class UsuarioService {
         System.out.print("Sexo (M/F): ");
         String sexo = scanner.next();
 
-        System.out.print("Objetivo: ");
+        System.out.print("Objetivo (" + Arrays.toString(ObjetivoEnum.values()) + "): ");
         String objetivo = scanner.next();
 
-        Usuario novoUsuario = new Usuario(nome, email, dataNascimento, peso, altura, sexo, objetivo);
+        ObjetivoEnum objetivoEnum = ObjetivoEnum.getTipo(objetivo);
+
+        Usuario novoUsuario = new Usuario(nome, email, dataNascimento, peso, altura, sexo, objetivoEnum);
         try {
             adicionarUsuario(novoUsuario);
             System.out.println("Usuário cadastrado com sucesso!");
+            System.out.println();
         } catch (Exception e) {
             System.err.println("Erro ao cadastrar usuário: " + e.getMessage());
         }
-
-        calcularMetabolismoBasal(novoUsuario.getDataNascimento(), novoUsuario.getSexo(), novoUsuario.getPeso(), novoUsuario.getAltura());
+        var metabolismo = calcularMetabolismoBasal(novoUsuario.getDataNascimento(), novoUsuario.getSexo(), novoUsuario.getPeso(), novoUsuario.getAltura());
+        novoUsuario.setMetabolismoBasal(metabolismo);
     }
 
-    private void salvarUsuariosEmArquivo() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(CAMINHO_ARQUIVO))) {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            for (Usuario usuario : usuariosCadastrados) {
-                String linha = usuario.getNome() + "," + usuario.getEmail() + "," + sdf.format(usuario.getDataNascimento()) + "," + usuario.getPeso() + "," + usuario.getAltura() + "," + usuario.getSexo() + "," + usuario.getObjetivo();
-                writer.println(linha);
+    public void removerUsuario(Scanner scanner) throws Exception {
+        mostrarUsuarios();
+        System.out.println("Digite o email do usuário para remover: ");
+        String emailUsuario = scanner.next();
+        Usuario usuarioRemovido = null;
+        for (Usuario usuario : usuariosCadastrados) {
+            if (usuario.getEmail().equals(emailUsuario)) {
+                usuarioRemovido = usuario;
+                break;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-    }
-
-
-    public void adicionarUsuario(Usuario usuario) throws Exception {
-        if (usuariosCadastrados.stream().anyMatch(u -> u.getEmail().equals(usuario.getEmail()))) {
-            throw new Exception("Usuário já cadastrado!");
+        if (usuarioRemovido == null) {
+            System.out.println("Usuário não cadastrado, não é possível remover!");
+            return;
         }
-        usuariosCadastrados.add(usuario);
+        usuariosCadastrados.remove(usuarioRemovido);
         salvarUsuariosEmArquivo();
-    }
-
-    public void removerUsuario(String emailUsuario) throws Exception {
-        boolean removed = usuariosCadastrados.removeIf(u -> u.getEmail().equals(emailUsuario));
-        if (!removed) {
-            throw new Exception("Usuário não cadastrado, não é possível remover!");
-        }
     }
 
     public void mostrarUsuarios() throws Exception {
@@ -133,6 +121,56 @@ public class UsuarioService {
                 System.out.println("Objetivo: " + usuario.getObjetivo());
                 System.out.println();
             }
+        }
+    }
+
+    public Usuario entrarComUsuario(String email) {
+        Usuario usuarioEncontrado = null;
+
+        for (Usuario usuario : usuariosCadastrados) {
+            if (usuario.getEmail().equals(email)) {
+                usuarioEncontrado = usuario;
+            }
+        }
+        return usuarioEncontrado;
+    }
+
+    private static Usuario parseJsonParaUsuario(String json) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        try {
+            return objectMapper.readValue(json, Usuario.class);
+        } catch (Exception e) {
+            throw new ErroConverterJsonException("usuario.txt", e);
+        }
+    }
+
+    private void adicionarUsuario(Usuario usuario) throws Exception {
+        if (usuariosCadastrados.stream().anyMatch(u -> u.getEmail().equals(usuario.getEmail()))) {
+            throw new Exception("Usuário já cadastrado!");
+        }
+        usuariosCadastrados.add(usuario);
+        salvarUsuariosEmArquivo();
+    }
+
+    private String converterUsuarioParaJson(Usuario usuario) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        try {
+            return objectMapper.writeValueAsString(usuario);
+        } catch (Exception e) {
+            throw new ErroConverterEntidadeException("Usuario", e);
+        }
+    }
+
+    private void salvarUsuariosEmArquivo() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(CAMINHO_ARQUIVO))) {
+            for (Usuario usuario : usuariosCadastrados) {
+                String json = converterUsuarioParaJson(usuario);
+                writer.println(json);
+            }
+        } catch (Exception e) {
+            throw new ErroSalvarArquivoException("usuario.txt", e);
         }
     }
 

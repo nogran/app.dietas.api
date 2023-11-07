@@ -1,12 +1,11 @@
 package entidade;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
-public class DiarioExercicios {
+public class DiarioExercicio {
     private List<Exercicio> exercicios;
-    private LocalDate date;
+    private LocalDate data;
     private int totalMinutos;
     private double totalCalorias;
 
@@ -14,8 +13,8 @@ public class DiarioExercicios {
         return exercicios;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getData() {
+        return data;
     }
 
     public int getTotalMinutos() {
@@ -30,8 +29,8 @@ public class DiarioExercicios {
         this.exercicios = exercicios;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setData(LocalDate data) {
+        this.data = data;
     }
 
     public void setTotalMinutos(int totalMinutos) {

@@ -18,26 +18,6 @@ public class AlimentoService {
         this.carregarAlimentos();
     }
 
-    private void carregarAlimentos() {
-        try (BufferedReader br = new BufferedReader(new FileReader("src/arquivo/alimentos.txt"))) {
-            String linha;
-            while ((linha = br.readLine()) != null) {
-                String[] partes = linha.split(",");
-                if (partes.length == 5) {
-                    String nome = partes[0];
-                    float quantidade = Float.parseFloat(partes[1]);
-                    float carboidrato = Float.parseFloat(partes[2]);
-                    float proteina = Float.parseFloat(partes[3]);
-                    float gordura = Float.parseFloat(partes[4]);
-                    Alimento alimento = new Alimento(nome, quantidade, carboidrato, proteina, gordura);
-                    alimentosCadastrados.put(nome, alimento);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void adicionarAlimento(Alimento alimento) throws Exception {
         if (alimentosCadastrados.containsKey(alimento.getNome())) {
             throw new Exception("Alimento já cadastrado!");
@@ -66,6 +46,26 @@ public class AlimentoService {
                 System.out.println("Calorias: " + alimento.getTotalCaloria() + " kcal");
                 System.out.println();
             }
+        }
+    }
+
+    private void carregarAlimentos() {
+        try (BufferedReader br = new BufferedReader(new FileReader(CAMINHO_ARQUIVO))) {
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                String[] partes = linha.split(",");
+                if (partes.length == 5) {
+                    String nome = partes[0];
+                    float quantidade = Float.parseFloat(partes[1]);
+                    float carboidrato = Float.parseFloat(partes[2]);
+                    float proteina = Float.parseFloat(partes[3]);
+                    float gordura = Float.parseFloat(partes[4]);
+                    Alimento alimento = new Alimento(nome, quantidade, carboidrato, proteina, gordura);
+                    alimentosCadastrados.put(nome, alimento);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

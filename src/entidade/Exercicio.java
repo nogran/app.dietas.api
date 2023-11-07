@@ -3,7 +3,7 @@ package entidade;
 public class Exercicio {
     private Atividade atividade;
     private int tempo;
-    private double calorias;
+    private double caloria;
 
     public Atividade getAtividade() {
         return atividade;
@@ -13,8 +13,8 @@ public class Exercicio {
         return tempo;
     }
 
-    public double getCalorias() {
-        return calorias;
+    public double getCaloria() {
+        return caloria;
     }
 
     public void setAtividade(Atividade atividade) {
@@ -25,7 +25,16 @@ public class Exercicio {
         this.tempo = tempo;
     }
 
-    public void setCalorias(double calorias) {
-        this.calorias = calorias;
+    public void setCaloria(double caloria) {
+        this.caloria = caloria;
+    }
+
+    public Exercicio(Atividade atividade, int tempo, double caloria) {
+        this.atividade = atividade;
+        this.tempo = tempo;
+        this.caloria = caloria;
+    }
+
+    public Exercicio() {
     }
 }

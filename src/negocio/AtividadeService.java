@@ -12,34 +12,15 @@ public class AtividadeService {
 
     private String nome;
     private float met;
-
     private Map<String, Double> atividadesCadastradas;
-
     private static final String CAMINHO_ARQUIVO = "src/arquivo/atividades.txt";
-
 
     public AtividadeService() {
         atividadesCadastradas = new HashMap<>();
         carregarAtividades();
     }
 
-    private void carregarAtividades() {
-        try (BufferedReader br = new BufferedReader(new FileReader(CAMINHO_ARQUIVO))) {
-            String linha;
-            while ((linha = br.readLine()) != null) {
-                String[] partes = linha.split(",");
-                if (partes.length == 2) {
-                    String nomeAtividade = partes[0];
-                    double met = Double.parseDouble(partes[1]);
-                    atividadesCadastradas.put(nomeAtividade, met);
-                }
-            }
-        } catch (IOException e) {
-            e.getMessage();
-        }
-    }
-
-    public void adicionarAtividade(String nomeAtividade, double met) throws Exception {
+    public void criarAtividade(String nomeAtividade, double met) throws Exception {
         if (atividadesCadastradas.containsKey(nomeAtividade)) {
             throw new Exception("Atividade já cadastrada!");
         }
@@ -48,6 +29,8 @@ public class AtividadeService {
         }
         atividadesCadastradas.put(nomeAtividade, met);
         salvarAtividadesNoArquivo(); // Chama o método para salvar as atividades no arquivo
+        System.out.println("Atividade criada com sucesso!");
+        System.out.println();
     }
 
     public void removerAtividade(String nomeAtividade) throws Exception {
@@ -59,7 +42,7 @@ public class AtividadeService {
         }
     }
 
-    public void mostrarAtividades() throws Exception {
+    public void listarAtividades() throws Exception {
         if (atividadesCadastradas.isEmpty()) {
             throw new Exception("Nao existe atividade cadastrada");
         } else {
@@ -79,6 +62,22 @@ public class AtividadeService {
                 bw.write(nomeAtividade + "," + met);
                 bw.newLine(); // Para avançar para a próxima linha no arquivo
             }
+        }
+    }
+
+    private void carregarAtividades() {
+        try (BufferedReader br = new BufferedReader(new FileReader(CAMINHO_ARQUIVO))) {
+            String linha;
+            while ((linha = br.readLine()) != null) {
+                String[] partes = linha.split(",");
+                if (partes.length == 2) {
+                    String nomeAtividade = partes[0];
+                    double met = Double.parseDouble(partes[1]);
+                    atividadesCadastradas.put(nomeAtividade, met);
+                }
+            }
+        } catch (IOException e) {
+            e.getMessage();
         }
     }
 

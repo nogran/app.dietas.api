@@ -4,44 +4,52 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Refeicao {
+    private String nome;
 
     private List<Alimento> alimentos;
 
-    private LocalDate localDate;
+    private LocalDate dataRefeicao;
 
     private double totalCalorias;
-
-    private String tipo;
 
     public List<Alimento> getAlimentos() {
         return alimentos;
     }
 
-    public LocalDate getLocalDate() {
-        return localDate;
+    public LocalDate getDataRefeicao() {
+        return dataRefeicao;
     }
 
     public double getTotalCalorias() {
         return totalCalorias;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getNome() {
+        return nome;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public void setAlimentos(List<Alimento> alimentos) {
         this.alimentos = alimentos;
     }
 
-    public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
+    public void setDataRefeicao(LocalDate dataRefeicao) {
+        this.dataRefeicao = dataRefeicao;
     }
 
     public void setTotalCalorias(double totalCalorias) {
         this.totalCalorias = totalCalorias;
+    }
+
+    public Refeicao(String nome, List<Alimento> alimentos, LocalDate dataRefeicao) {
+        this.nome = nome;
+        this.alimentos = alimentos;
+        this.dataRefeicao = dataRefeicao;
+    }
+
+    public Refeicao() {
     }
 }
