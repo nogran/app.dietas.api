@@ -1,0 +1,16 @@
+testedfagd,5.5
+AlongamentoBaixa,2.3
+HidroginasticaModerada,5.5
+BasqueteModerado,8.0
+HandbolModerado,8.0
+VoleiPraiaModerado,8.0
+teste2,5.5
+DancaAula,5.0
+MusculacaoModerada,3.5
+YogaModerado,2.5
+FutebolModerado,8.0
+CiclismoLazerBaixa,4.0
+CiclismoAlto,16.0
+MusculacaoAlta,6.0
+CiclismoEstacionarioModerado,6.8
+PilatesModerado,3.0

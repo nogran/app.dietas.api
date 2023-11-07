@@ -1,0 +1,3 @@
+Mateus,mateus@email.com,02/02/1995,78.5,178,M,hipertrofia
+Lucas,lucas@email.com,02/02/1995,78.5,178,M,hipertrofia,
+enzo,m,02/02/1995,54.0,54,M,hiper

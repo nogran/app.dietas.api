@@ -1,0 +1,4 @@
+Arroz, 100, 28.1f, 2.5f, 0.2f
+Frango, 150, 0.0f, 30.0f, 3.6f
+Batata, 200, 44.0f, 2.0f, 0.2f
+OvoGalinhaCru, 100, 1.6f, 13.0f, 8.9f

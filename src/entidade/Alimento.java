@@ -1,4 +1,4 @@
-package model;
+package entidade;
 
 public class Alimento {
     private String nome;
@@ -63,6 +63,9 @@ public class Alimento {
         this.proteina = proteina;
         this.gordura = gordura;
         this.totalCaloria = calcularCaloria();
+    }
+
+    public Alimento() {
     }
 
     private float calcularCaloria() {
