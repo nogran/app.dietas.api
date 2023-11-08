@@ -77,6 +77,8 @@ public class UsuarioService {
         ObjetivoEnum objetivoEnum = ObjetivoEnum.getTipo(objetivo);
 
         Usuario novoUsuario = new Usuario(nome, email, dataNascimento, peso, altura, sexo, objetivoEnum);
+        novoUsuario.setRefeicoes(new ArrayList<>());
+        novoUsuario.setDiarioExercicios(new ArrayList<>());
         try {
             adicionarUsuario(novoUsuario);
             System.out.println("Usuário cadastrado com sucesso!");
@@ -153,16 +155,6 @@ public class UsuarioService {
         salvarUsuariosEmArquivo();
     }
 
-    private String converterUsuarioParaJson(Usuario usuario) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JavaTimeModule());
-        try {
-            return objectMapper.writeValueAsString(usuario);
-        } catch (Exception e) {
-            throw new ErroConverterEntidadeException("Usuario", e);
-        }
-    }
-
     private void salvarUsuariosEmArquivo() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(CAMINHO_ARQUIVO))) {
             for (Usuario usuario : usuariosCadastrados) {
@@ -171,6 +163,27 @@ public class UsuarioService {
             }
         } catch (Exception e) {
             throw new ErroSalvarArquivoException("usuario.txt", e);
+        }
+    }
+
+    public void salvarUsuariosEmArquivo(Usuario usuario) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(CAMINHO_ARQUIVO))) {
+            for (Usuario i : usuariosCadastrados) {
+                String json = converterUsuarioParaJson(usuario);
+                writer.println(json);
+            }
+        } catch (Exception e) {
+            throw new ErroSalvarArquivoException("usuario.txt", e);
+        }
+    }
+
+    private String converterUsuarioParaJson(Usuario usuario) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        try {
+            return objectMapper.writeValueAsString(usuario);
+        } catch (Exception e) {
+            throw new ErroConverterEntidadeException("Usuario", e);
         }
     }
 

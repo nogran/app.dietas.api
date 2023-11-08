@@ -1,12 +1,13 @@
-import entidade.Alimento;
-import entidade.Refeicao;
-import entidade.Usuario;
+import entidade.*;
+import enums.TipoRefeicaoEnum;
 import exception.ErroRefeicaoDuplicadaException;
 import negocio.*;
 
 import java.text.ParseException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class AppDietas {
@@ -101,9 +102,6 @@ public class AppDietas {
                     sair = true;
                     System.out.println();
                     break;
-                case 6:
-                    System.out.println("Saindo do sistema.");
-                    return;
                 default:
                     System.out.println("Opção inválida.");
             }
@@ -125,7 +123,7 @@ public class AppDietas {
                     var nomeNovaAtividade = scanner.nextLine();
 
                     System.out.println("Digite o MET da Atividade: ");
-                    var metNovaAtividade = scanner.nextDouble();
+                    var metNovaAtividade = scanner.nextFloat();
 
                     try {
                         atividadeService.criarAtividade(nomeNovaAtividade, metNovaAtividade);
@@ -140,7 +138,9 @@ public class AppDietas {
                     break;
                 case 3:
                     atividadeService.listarAtividades();
+                    System.out.println();
                     break;
+
                 case 4:
                     sair = true;
                     System.out.println("Saindo do sistema.");
@@ -154,6 +154,8 @@ public class AppDietas {
 
     private static void mostrarOpcoesMenuExercicios(Scanner scanner) throws Exception {
         DiarioExercicioService diarioExercicioService = new DiarioExercicioService();
+        ExercicioService exercicioService = new ExercicioService();
+        AtividadeService atividadeService = new AtividadeService();
         boolean sair = false; // Variável para controlar o retorno ao menu anterior
         while (!sair) {
             imprimirMenuDeExercicio();
@@ -165,17 +167,34 @@ public class AppDietas {
                     diarioExercicioService.mostrarResumoDeExercicios(usuarioLogado);
                     break;
                 case 2:
-                    diarioExercicioService.mostrarResumoDeExercicios(usuarioLogado, LocalDate.now());
+
+                    System.out.println("Digite o tempo do exercicio em minutos: ");
+                    var tempo = scanner.nextInt();
+
+                    Exercicio exercicio = new Exercicio();
+                    exercicio.setTempo(tempo);
+
+                    atividadeService.listarAtividades();
+
+                    var nome = scanner.nextLine();
+                    Atividade atividade = atividadeService.buscarAtividadePorNome(nome);
+                    exercicio.setAtividade(atividade);
+
+                    var gastoCaloricoDoExercicio = exercicioService.calcularGastoCalorico(atividade.getMet(), usuarioLogado.getPeso(), tempo);
+                    exercicio.setCaloria(gastoCaloricoDoExercicio);
+
+                    diarioExercicioService.adicionarExercicio(usuarioLogado, exercicio);
                     break;
                 case 3:
-                    diarioExercicioService.adicionarExercicio(usuarioLogado);
+//                    diarioExercicioService.removerExercicio(usuarioLogado, exercicio);
                     break;
                 case 4:
-                    sair = true;
-                    System.out.println();
+                    diarioExercicioService.listarDiarioExercicios(usuarioLogado);
                     break;
                 case 5:
                     System.out.println("Saindo do sistema.");
+                    sair = true;
+                    System.out.println();
                     return;
                 default:
                     System.out.println("Opção inválida.");
@@ -231,6 +250,7 @@ public class AppDietas {
 
     private static void mostrarOpcoesMenuRefeicao(Scanner scanner) throws Exception {
         RefeicaoService refeicaoService = new RefeicaoService();
+        AlimentoService alimentoService = new AlimentoService();
         boolean sair = false; // Variável para controlar o retorno ao menu anterior
         while (!sair) {
             imprimirMenuDeRefeicao();
@@ -242,13 +262,39 @@ public class AppDietas {
                     refeicaoService.mostrarRefeicoes(usuarioLogado, LocalDate.now());
                     break;
                 case 2:
-//                    System.out.println("Digite o nome da refeicao: ");
-//                    var nomeRefeicao = scanner.nextLine();
-//
-//                    refeicaoService.
-//
-//                    Refeicao refeicao = new Refeicao(nomeRefeicao, )
-//                    refeicaoService.adicionarRefeicao(refeicao, usuarioLogado);
+                    Refeicao refeicao = new Refeicao();
+                    System.out.println("Digite o nome da refeicao " + Arrays.stream(TipoRefeicaoEnum.values()).toList() + ":");
+                    var tipoRefeicao = scanner.nextLine();
+
+                    TipoRefeicaoEnum tipoRefeicaoEnum = null;
+
+                    try {
+                        tipoRefeicaoEnum = TipoRefeicaoEnum.valueOf(tipoRefeicao);
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Tipo de refeição inválido. Opções válidas são: " + Arrays.toString(TipoRefeicaoEnum.values()));
+                    }
+
+                    if (tipoRefeicaoEnum != null) {
+                        refeicao.setNome(tipoRefeicaoEnum.getTipo());
+                        Integer saida = 0;
+                        alimentoService.mostrarAlimentos();
+                        List<Alimento> alimentos = new ArrayList<>();
+                        while (saida != 2) {
+
+                            System.out.println("Digite o nome do alimento(um de cada vez): ");
+                            var nomeAlimento = scanner.nextLine();
+                            Alimento alimento = alimentoService.buscarAlimentoPeloNome(nomeAlimento);
+                            alimentos.add(alimento);
+
+                            System.out.println("Digite 1 para continuar e 2 para sair");
+                            saida = scanner.nextInt();
+                            scanner.nextLine();
+                        }
+                        refeicao.setAlimentos(alimentos);
+                        refeicao.setNome(tipoRefeicao);
+                        refeicao.setDataRefeicao(LocalDate.now());
+                        refeicaoService.adicionarRefeicao(refeicao, usuarioLogado);
+                    }
                     break;
                 case 3:
                     Refeicao refeicao1 = null;
@@ -284,8 +330,7 @@ public class AppDietas {
         System.out.println("2- Alimento");
         System.out.println("3- Exercicio");
         System.out.println("4- Refeicao");
-        System.out.println("5- Voltar ao menu anterior");
-        System.out.println("6- Sair");
+        System.out.println("5- Sair");
     }
 
 
@@ -311,8 +356,7 @@ public class AppDietas {
         System.out.println("2- Adicionar Exercicio");
         System.out.println("3- Remover Exercicio");
         System.out.println("4- Listar Exercicios");
-        System.out.println("5- Listar Exercicios realizados hoje");
-        System.out.println("6- Sair");
+        System.out.println("5- Sair");
     }
 
     private static void imprimirMenuDeRefeicao() {

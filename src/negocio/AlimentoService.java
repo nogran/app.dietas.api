@@ -68,4 +68,8 @@ public class AlimentoService {
             e.printStackTrace();
         }
     }
+
+    public Alimento buscarAlimentoPeloNome(String nomeAlimento) {
+        return alimentosCadastrados.get(nomeAlimento);
+    }
 }

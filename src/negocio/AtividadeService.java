@@ -1,5 +1,7 @@
 package negocio;
 
+import entidade.Atividade;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +14,7 @@ public class AtividadeService {
 
     private String nome;
     private float met;
-    private Map<String, Double> atividadesCadastradas;
+    private Map<String, Float> atividadesCadastradas;
     private static final String CAMINHO_ARQUIVO = "src/arquivo/atividades.txt";
 
     public AtividadeService() {
@@ -20,7 +22,7 @@ public class AtividadeService {
         carregarAtividades();
     }
 
-    public void criarAtividade(String nomeAtividade, double met) throws Exception {
+    public void criarAtividade(String nomeAtividade, Float met) throws Exception {
         if (atividadesCadastradas.containsKey(nomeAtividade)) {
             throw new Exception("Atividade já cadastrada!");
         }
@@ -38,7 +40,7 @@ public class AtividadeService {
             atividadesCadastradas.remove(nomeAtividade);
             salvarAtividadesNoArquivo(); // Chama o método para salvar as atividades no arquivo
         } else {
-            throw new Exception("Atividade não cadastrada, não é possível remover!");
+            System.out.println("Atividade não cadastrada, não é possível remover!");
         }
     }
 
@@ -46,7 +48,7 @@ public class AtividadeService {
         if (atividadesCadastradas.isEmpty()) {
             throw new Exception("Nao existe atividade cadastrada");
         } else {
-            for (Map.Entry<String, Double> entry : atividadesCadastradas.entrySet()) {
+            for (Map.Entry<String, Float> entry : atividadesCadastradas.entrySet()) {
                 String nomeAtividade = entry.getKey();
                 double m = entry.getValue();
                 System.out.println(nomeAtividade + ": " + m + " MET");
@@ -56,7 +58,7 @@ public class AtividadeService {
 
     private void salvarAtividadesNoArquivo() throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(CAMINHO_ARQUIVO))) {
-            for (Map.Entry<String, Double> entry : atividadesCadastradas.entrySet()) {
+            for (Map.Entry<String, Float> entry : atividadesCadastradas.entrySet()) {
                 String nomeAtividade = entry.getKey();
                 double met = entry.getValue();
                 bw.write(nomeAtividade + "," + met);
@@ -72,13 +74,21 @@ public class AtividadeService {
                 String[] partes = linha.split(",");
                 if (partes.length == 2) {
                     String nomeAtividade = partes[0];
-                    double met = Double.parseDouble(partes[1]);
+                    Float met = (float) Double.parseDouble(partes[1]);
                     atividadesCadastradas.put(nomeAtividade, met);
                 }
             }
         } catch (IOException e) {
             e.getMessage();
         }
+    }
+
+    public Atividade buscarAtividadePorNome(String nomeAtividade) {
+        if (atividadesCadastradas.containsKey(nomeAtividade)) {
+            double met = atividadesCadastradas.get(nomeAtividade);
+            return new Atividade(nomeAtividade, (float) met);
+        }
+        return null; // Retorna null se a atividade não for encontrada
     }
 
 }

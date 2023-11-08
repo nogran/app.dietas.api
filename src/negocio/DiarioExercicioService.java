@@ -1,6 +1,7 @@
 package negocio;
 
 import entidade.DiarioExercicio;
+import entidade.Exercicio;
 import entidade.Usuario;
 
 import java.time.LocalDate;
@@ -11,7 +12,7 @@ public class DiarioExercicioService {
 
     ExercicioService exercicioService = new ExercicioService();
 
-    public void adicionarExercicio(Usuario usuario) throws Exception {
+    public void adicionarExercicio(Usuario usuario, Exercicio exercicio) throws Exception {
 
         LocalDate hoje = LocalDate.now();
 
@@ -19,8 +20,6 @@ public class DiarioExercicioService {
                 .filter(d -> d.getData().isEqual(hoje))
                 .findFirst()
                 .orElse(null);
-
-        var exercicio = exercicioService.criarExercicio();
 
         if (diarioAtual != null) {
             // Se já existe um DiarioExercicios para o dia atual, adiciona o exercício a ele
@@ -35,7 +34,7 @@ public class DiarioExercicioService {
     }
 
     public void mostrarResumoDeExercicios(Usuario usuario) {
-        if (usuario.getDiarioExercicios().isEmpty()) {
+        if (usuario.getDiarioExercicios() == null || usuario.getDiarioExercicios().isEmpty()) {
             System.out.println("Não existem registros de exercícios no diário.");
             System.out.println();
         } else {
@@ -69,7 +68,7 @@ public class DiarioExercicioService {
     }
 
     public void listarDiarioExercicios(Usuario usuario) {
-        if (usuario.getDiarioExercicios().isEmpty()) {
+        if (usuario.getDiarioExercicios() == null || usuario.getDiarioExercicios().isEmpty()) {
             System.out.println("Não existem registros de exercícios no diário.");
         } else {
             System.out.println("Diário de Exercícios de " + usuario.getNome() + ":");
@@ -82,4 +81,25 @@ public class DiarioExercicioService {
             }
         }
     }
+
+    public void removerExercicio(Usuario usuario, Exercicio exercicio) {
+        LocalDate hoje = LocalDate.now();
+
+        DiarioExercicio diarioAtual = usuario.getDiarioExercicios().stream()
+                .filter(d -> d.getData().isEqual(hoje))
+                .findFirst()
+                .orElse(null);
+
+        if (diarioAtual != null) {
+            // Se já existe um DiarioExercicios para o dia atual, tenta remover o exercício dele
+            if (diarioAtual.getExercicios().remove(exercicio)) {
+                System.out.println("Exercício removido com sucesso.");
+            } else {
+                System.out.println("Exercício não encontrado no diário.");
+            }
+        } else {
+            System.out.println("Não há registro de exercícios para o dia atual.");
+        }
+    }
+
 }
