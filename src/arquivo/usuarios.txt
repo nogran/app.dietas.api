@@ -1,2 +1,0 @@
-{"nome":"Mateus","email":"testeemail@email.com","dataNascimento":[1995,2,2],"peso":65.0,"altura":170,"sexo":"M","objetivo":"DEFINICAO","metabolismoBasal":0.0,"diarioExercicios":null,"refeicoes":null,"dataCriacao":null}
-{"nome":"Lucas","email":"lucas@email.com","dataNascimento":[1993,10,2],"peso":85.0,"altura":190,"sexo":"M","objetivo":"DEFINICAO","metabolismoBasal":0.0,"diarioExercicios":null,"refeicoes":null,"dataCriacao":null}
