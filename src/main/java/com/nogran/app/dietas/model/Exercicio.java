@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Exercicio {
-  private Atividade atividade;
+  private Esporte esporte;
   private int tempo;
   private double caloria;
 }

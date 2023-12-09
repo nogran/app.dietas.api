@@ -1,6 +1,6 @@
 package com.nogran.app.dietas.service;
 
-import com.nogran.app.dietas.model.Atividade;
+import com.nogran.app.dietas.model.Esporte;
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class AtividadeService {
+public class EsporteService {
 
   private final String nome;
   private final float met;
@@ -38,10 +38,10 @@ public class AtividadeService {
     }
   }
 
-  public Atividade buscarAtividadePorNome(String nomeAtividade) {
+  public Esporte buscarAtividadePorNome(String nomeAtividade) {
     if (atividadesCadastradas.containsKey(nomeAtividade)) {
       double met = atividadesCadastradas.get(nomeAtividade);
-      return new Atividade(nomeAtividade, (float) met);
+      return new Esporte(nomeAtividade, (float) met);
     }
     return null; // Retorna null se a atividade não for encontrada
   }

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Atividade {
+public class Esporte {
   private String nome;
   private float met;
 }

@@ -1,6 +1,7 @@
 package com.nogran.app.dietas.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Usuario {
+
   private String nome;
   private String email;
   private LocalDate dataNascimento;
@@ -20,5 +22,6 @@ public class Usuario {
   private float metabolismoBasal;
   private List<DiarioExercicio> diarioExercicios;
   private List<Refeicao> refeicoes;
-  private LocalDate dataCriacao;
+  private LocalDateTime dataCriacao;
+
 }
