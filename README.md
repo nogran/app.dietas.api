@@ -72,63 +72,52 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 - Privacidade dos Dados
 
 ```mermaid
-  flowchart TB
-  
-  subgraph cluster_Cadastro
-    Cadastrar_Usuario
-    Gerenciar_Perfil
-  end
-  
-  subgraph cluster_Alimentos
-    Pesquisar_Alimentos
-    Adicionar_Alimento
-    Registrar_Refeicao
-  end
-  
-  subgraph cluster_Refeicoes
-    Gerenciar_Refeicao
-    Visualizar_Refeicao
-  end
-  
-  subgraph cluster_InformacoesNutricionais
-    Acompanhar_Calorias
-    Monitorar_Nutrientes
-  end
-  
-  subgraph cluster_Exercicios
-    Adicionar_Exercicio
-    Registrar_Atividade_Fisica
-  end
-  
-  subgraph cluster_Metabolismo
-    Ajustar_Metabolismo
-    Calcular_TMB
-  end
-  
-  subgraph cluster_Relatorios
-    Gerar_Relatorios
-    Visualizar_Progresso
-  end
-  
-  subgraph cluster_Planejamento
-    Planejamento_Personalizado
-    Banco_de_Receitas
-    Rotinas_de_Exercicios
-    Estatisticas_e_Graficos
-    Lista_de_Compras
-  end
-  
-  Cadastro --> Alimentos
-  Cadastro --> Refeicoes
-  Cadastro --> InformacoesNutricionais
-  Cadastro --> Exercicios
-  Cadastro --> Metabolismo
-  Cadastro --> Relatorios
-  Alimentos --> Refeicoes
-  Alimentos --> InformacoesNutricionais
-  Refeicoes --> InformacoesNutricionais
-  Exercicios --> InformacoesNutricionais
-  Metabolismo --> InformacoesNutricionais
-  Relatorios --> Planejamento
-  Planejamento --> {Planejamento_Personalizado, Banco_de_Receitas, Rotinas_de_Exercicios, Estatisticas_e_Graficos, Lista_de_Compras}
+graph TD
+
+subgraph cluster_Usuario
+  Cadastrar_Usuario
+  Gerenciar_Perfil
+end
+
+subgraph cluster_Alimentos
+  Pesquisar_Alimentos
+  Adicionar_Alimento
+  Registrar_Refeicao
+end
+
+subgraph cluster_Refeicoes
+  Gerenciar_Refeicao
+  Visualizar_Refeicao
+end
+
+subgraph cluster_Exercicios
+  Adicionar_Exercicio
+  Registrar_Atividade_Fisica
+end
+
+subgraph cluster_Metabolismo
+  Ajustar_Metabolismo
+  Calcular_TMB
+end
+
+subgraph cluster_Relatorios
+  Gerar_Relatorios
+  Visualizar_Progresso
+end
+
+Cadastrar_Usuario --> |1. Cadastro| Alimentos
+Cadastrar_Usuario --> |2. Cadastro| Refeicoes
+Cadastrar_Usuario --> |3. Cadastro| Metabolismo
+Cadastrar_Usuario --> |4. Cadastro| Exercicios
+Cadastrar_Usuario --> |5. Cadastro| Relatorios
+
+Alimentos --> |6. Alimentos| Refeicoes
+Alimentos --> |7. Alimentos| Metabolismo
+
+Refeicoes --> |8. Refeicoes| Metabolismo
+
+Exercicios --> |9. Exercicios| Metabolismo
+
+Metabolismo --> |10. Metabolismo| Relatorios
+
 ```
