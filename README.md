@@ -71,23 +71,8 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 - Autenticação
 - Privacidade dos Dados
 
-```
+```mermaid
 graph TD;
-
-  subgraph "Aplicativo de Dietas"
-    Cadastro["Cadastrar Usuário", "Gerenciar Perfil"]
-    Alimentos["Pesquisar Alimentos", "Adicionar Alimento", "Registrar Refeição"]
-    Refeicoes["Gerenciar Refeição", "Visualizar Refeição"]
-    InformacoesNutricionais["Acompanhar Calorias", "Monitorar Nutrientes"]
-    Exercicios["Adicionar Exercício", "Registrar Atividade Física"]
-    Metabolismo["Ajustar Metabolismo", "Calcular Taxa Metabolica Basal"]
-    Relatorios["Gerar Relatórios", "Visualizar Progresso"]
-    Notificacoes["Configurar Notificações", "Lembretes"]
-    Comunidade["Fórum de Discussão", "Compartilhar Conquistas"]
-    Integ{"Integração com Dispositivos", "Conectar a Apps de Saúde"}
-    Seguranca["Autenticação", "Privacidade dos Dados"]
-  end
-
   Cadastro --> Alimentos
   Cadastro --> Exercicios
   Cadastro --> Metabolismo
