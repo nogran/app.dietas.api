@@ -55,6 +55,10 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 - Visualizar progresso em gráficos intuitivos
 - Exportar Relatórios
 
+## 🔢 Diagramas
+
+![alt text](https://www.plantuml.com/plantuml/png/VPBFZjCm4CRlUOfXBnpGliEMfLiXiIjKBTm7Pre67BiQswW2yJ280wSzhNY2l1XEKgnHdFOInVxDV9_dpqs8A35rjddHqeuTmNPz-xXwsBnRWx4OGjCSq7p5FS7L6yQzO8VG4jmbPzWxjDnYIm5o7baShpfoqOSh-D40DA3qFeJK_nBs8m5u1RVOOeY2Kj09R4WewsVmdcJ7Db__RBGMh2nFFaLirV9eBuLLOYMf-5kJBChmuuKnr3vRsX7tV_g_jE1KwE_QIoMUSuE3rnAr-Vf8OlgdRBPWhkW9RMdFKpjNaR-DWu6x_YcmmVaJDXYY7uxzix1PiBwdY9-yvT3vObso7_689S8WlCQ0zl_xlgGGKRH0hVxMxRnqEBNd8KMPQc9Lfl7T0TrdFPo9t7l7qSjWWKQy6xB9HLeSdiMOAzJzsv2WQ7Aw_yWXeUNlYt1zpAEA5HhjNiut7_9N2F9Frp-toOwXPVUlhyiQpk_BG2kYcvbH4SXCBrfc-ZZBhE3vCMIXit0oLPtDmVhf5uMhq5bf-dXPw8PScphx3m00)
+
 ## 📝 Backlog
 
 ### 🔒 **Segurança**
@@ -80,4 +84,3 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 - Criar lista de compras baseada no plano de dieta
 - Economizar tempo e dinheiro com uma despensa saudável
 
-![alt text](https://www.plantuml.com/plantuml/png/VPBFZjCm4CRlUOfXBnpGliEMfLiXiIjKBTm7Pre67BiQswW2yJ280wSzhNY2l1XEKgnHdFOInVxDV9_dpqs8A35rjddHqeuTmNPz-xXwsBnRWx4OGjCSq7p5FS7L6yQzO8VG4jmbPzWxjDnYIm5o7baShpfoqOSh-D40DA3qFeJK_nBs8m5u1RVOOeY2Kj09R4WewsVmdcJ7Db__RBGMh2nFFaLirV9eBuLLOYMf-5kJBChmuuKnr3vRsX7tV_g_jE1KwE_QIoMUSuE3rnAr-Vf8OlgdRBPWhkW9RMdFKpjNaR-DWu6x_YcmmVaJDXYY7uxzix1PiBwdY9-yvT3vObso7_689S8WlCQ0zl_xlgGGKRH0hVxMxRnqEBNd8KMPQc9Lfl7T0TrdFPo9t7l7qSjWWKQy6xB9HLeSdiMOAzJzsv2WQ7Aw_yWXeUNlYt1zpAEA5HhjNiut7_9N2F9Frp-toOwXPVUlhyiQpk_BG2kYcvbH4SXCBrfc-ZZBhE3vCMIXit0oLPtDmVhf5uMhq5bf-dXPw8PScphx3m00)
