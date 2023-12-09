@@ -74,50 +74,19 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 ```mermaid
 graph TD
 
-subgraph cluster_Usuario
-  Cadastrar_Usuario
-  Gerenciar_Perfil
-end
+Cadastrar_Usuario --> Alimentos
+Cadastrar_Usuario --> Refeicoes
+Cadastrar_Usuario --> Metabolismo
+Cadastrar_Usuario --> Exercicios
+Cadastrar_Usuario --> Relatorios
 
-subgraph cluster_Alimentos
-  Pesquisar_Alimentos
-  Adicionar_Alimento
-  Registrar_Refeicao
-end
+Alimentos --> Refeicoes
+Alimentos --> Metabolismo
 
-subgraph cluster_Refeicoes
-  Gerenciar_Refeicao
-  Visualizar_Refeicao
-end
+Refeicoes --> Metabolismo
 
-subgraph cluster_Exercicios
-  Adicionar_Exercicio
-  Registrar_Atividade_Fisica
-end
+Exercicios --> Metabolismo
 
-subgraph cluster_Metabolismo
-  Ajustar_Metabolismo
-  Calcular_TMB
-end
-
-subgraph cluster_Relatorios
-  Gerar_Relatorios
-  Visualizar_Progresso
-end
-
-Cadastrar_Usuario --> |1. Cadastro| Alimentos
-Cadastrar_Usuario --> |2. Cadastro| Refeicoes
-Cadastrar_Usuario --> |3. Cadastro| Metabolismo
-Cadastrar_Usuario --> |4. Cadastro| Exercicios
-Cadastrar_Usuario --> |5. Cadastro| Relatorios
-
-Alimentos --> |6. Alimentos| Refeicoes
-Alimentos --> |7. Alimentos| Metabolismo
-
-Refeicoes --> |8. Refeicoes| Metabolismo
-
-Exercicios --> |9. Exercicios| Metabolismo
-
-Metabolismo --> |10. Metabolismo| Relatorios
+Metabolismo --> Relatorios
 
 ```
