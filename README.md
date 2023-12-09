@@ -73,6 +73,7 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 
 ```mermaid
 graph TD;
+
   subgraph "Aplicativo de Dietas"
     Cadastro["Cadastrar Usuário", "Gerenciar Perfil"]
     Alimentos["Pesquisar Alimentos", "Adicionar Alimento", "Registrar Refeição"]
