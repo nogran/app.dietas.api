@@ -71,7 +71,7 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 - Autenticação
 - Privacidade dos Dados
 
-```mermaid
+```
 graph TD;
 
   subgraph "Aplicativo de Dietas"
