@@ -28,7 +28,7 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 - Gerenciar perfil de usuário
 
 ### 🍏 **Alimentos**
-- Adicionar alimentos ao plano
+- Adicionar alimento
 - Gerenciar lista de alimentos
 - Calcular calorias
 
@@ -38,21 +38,22 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 - Calcular calorias por refeição
 
 ### 🏋️‍♂️ **Exercícios**
-- Adicionar exercícios ao registro
+- Adicionar exercícios
 - Registrar atividade física
 - Calcular gasto calórico
 
 ### 🔄 **Metabolismo**
 - Calcular Taxa Metabólica Basal (TMB)
-- Ajustar configurações de metabolismo
+- Ajustar metabolismo
 
 ### 📊 **Informações Nutricionais**
 - Acompanhar ingestão diária de calorias
-- Monitorar macro e micronutrientes
+- Monitorar macronutrientes
 
 ### 📈 **Relatórios**
 - Gerar relatórios personalizados
 - Visualizar progresso em gráficos intuitivos
+- Exportar Relatórios
 
 ## 📝 Backlog
 
@@ -63,16 +64,20 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 ### 🌐 **Comunidade**
 - Compartilhar conquistas na comunidade
 - Postar fotos de refeições e receitas saudáveis
-- Criar grupos para compartilhar progresso
+- Criar grupos de amigos para compartilhar progresso
 
 ### 📬 **Notificações**
 - Configurar notificações personalizadas
 - Receber lembretes e atualizações
 
 ### 🔗 **Integrações**
-- Integrar com dispositivos fitness
-- Conectar a aplicativos de saúde externos
+- Integrar com dispositivos
+- Conectar a Apps de Saúde
+- API externa de código de barras para facilitar o gerenciamento de alimentos
+- API externa de preços de supermercados para ajudar na criação da sua lista de compras inteligente
 
 ### 🛒 **Lista de Compras Inteligente**
 - Criar lista de compras baseada no plano de dieta
 - Economizar tempo e dinheiro com uma despensa saudável
+
+![Funcionalidades Aplicativo de Dietas](/www.plantuml.com/plantuml/png/VPBFZjCm4CRlUOfXBnpGliE6RgcGs1Mg5kw3Coq3ZbsDRLI1U1Z4WTEULZn1NWox3TOeIVSInVFpV9_dpqs8A37rjddHqOuTmNQzUcZlD-_MO2o6q3G7D5znJt1roxWNx14wWbLX5A0zM3OO-PilqLkcYE4AVZG03IYf3o4DluJzYG2yWXLs6AAWL3I23Gavmncy9zcnpU6VZTQ2rd9FBlfGnTgE3Nk7KjbCh2PLVskIHIa_NXZ3t6TBE-BXp_2N5fmg_JtpKeaNtU3WjSJSV7qaCSEZuQKo5HtHblPyRcURPy4TTWHlXiV01gTFs628lXo79s6pO7r74Jzvow7Nungp7_28zOP1U8q1xV_tVKbbcxJ0NFsjstdfyToU-nJbN1EhCetl3-W-gtQDvCuxZbwA1HhnhcIJYxGuF8inLwZxjw6SgiaO_yWXeUNlYt1zpAEA4pJQlJm5J-yVDp9_XI3_zCDJb-pfQjtzwskzXZgk1ZebkfaPLO7CzA9bfe-Jp1cyF8OiT1cMJDtPV5a__LdXoTLvQUhulD0DkIxrzXy0)
