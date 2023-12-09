@@ -23,56 +23,56 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 
 ## 🚀 Funcionalidades
 
-### 1. **Usuário**
-- Cadastrar Usuário
-- Gerenciar Perfil
+## 1. 💻 **Usuário**
+- Cadastrar novo usuário
+- Gerenciar perfil de usuário
 
-### 2. **Alimentos**
-- Adicionar Alimentos
-- Gerenciar Alimentos
-- Calcular Calorias
+## 2. 🍏 **Alimentos**
+- Adicionar alimentos ao plano
+- Gerenciar lista de alimentos
+- Calcular calorias
 
-### 3. **Refeições**
-- Adicionar Refeições
-- Gerenciar Refeições
-- Calcular Calorias
+## 3. 🍽️ **Refeições**
+- Adicionar refeições ao planejamento
+- Gerenciar histórico de refeições
+- Calcular calorias por refeição
 
-### 4. **Exercícios**
-- Adicionar Exercício
-- Registrar Atividade Física
-- Calcular Gasto Calórico
+## 4. 🏋️‍♂️ **Exercícios**
+- Adicionar exercícios ao registro
+- Registrar atividade física
+- Calcular gasto calórico
 
-### 5. **Metabolismo**
+## 5. 🔄 **Metabolismo**
 - Calcular Taxa Metabólica Basal (TMB)
-- Ajustar Metabolismo
+- Ajustar configurações de metabolismo
 
-### 6. **Informações Nutricionais**
-- Acompanhar Calorias
-- Monitorar Macronutrientes
+## 6. 📊 **Informações Nutricionais**
+- Acompanhar ingestão diária de calorias
+- Monitorar macro e micronutrientes
 
-### 7. **Relatórios**
-- Gerar Relatórios
-- Visualizar Progresso
+## 7. 📈 **Relatórios**
+- Gerar relatórios personalizados
+- Visualizar progresso em gráficos intuitivos
 
-## 📝 Backlog
+<h1 align="center">📝 Backlog</h1>
 
-### 8. **Segurança**
-- Autenticação
-- Privacidade dos Dados
+## 8. 🔒 **Segurança**
+- Implementar autenticação segura
+- Garantir privacidade dos dados do usuário
 
-### 9. **Comunidade**
-- Compartilhar Conquistas
-- Postar refeições e receitas saudáveis
-- Criar grupos de trabalho e amigos para compartilhar progresso
+## 9. 🌐 **Comunidade**
+- Compartilhar conquistas na comunidade
+- Postar fotos de refeições e receitas saudáveis
+- Criar grupos para compartilhar progresso
 
-### 10. **Notificações**
-- Configurar Notificações
-- Lembretes
+## 10. 📬 **Notificações**
+- Configurar notificações personalizadas
+- Receber lembretes e atualizações
 
-### 11. **Integrações**
-- Integração com Dispositivos
-- Conectar a Apps de Saúde
+## 11. 🔗 **Integrações**
+- Integrar com dispositivos fitness
+- Conectar a aplicativos de saúde externos
 
-### 12. **Lista de Compras Inteligente**
-- Simplifique suas compras com uma lista inteligente ajustada ao seu plano de dieta.
-- Economize tempo e dinheiro, mantendo uma despensa saudável e alinhada com suas escolhas alimentares.
+## 12. 🛒 **Lista de Compras Inteligente**
+- Criar lista de compras baseada no plano de dieta
+- Economizar tempo e dinheiro com uma despensa saudável
