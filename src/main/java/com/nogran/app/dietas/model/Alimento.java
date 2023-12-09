@@ -20,14 +20,4 @@ public class Alimento {
   private float gordura;
 
   private float totalCaloria;
-
-  private float calcularCaloria() {
-    var proteinaKcal = 4;
-    var carboidratoKcal = 4;
-    var gorduraKcal = 9;
-
-    return this.carboidrato * carboidratoKcal
-        + this.proteina * proteinaKcal
-        + this.gordura * gorduraKcal;
-  }
 }

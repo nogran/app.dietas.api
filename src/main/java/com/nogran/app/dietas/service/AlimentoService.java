@@ -26,23 +26,11 @@ public class AlimentoService {
     }
   }
 
-  public void mostrarAlimentos() throws Exception {
-    if (alimentosCadastrados.isEmpty()) {
-      throw new Exception("Não existem alimentos cadastrados.");
-    } else {
-      for (Map.Entry<String, Alimento> entry : alimentosCadastrados.entrySet()) {
-        Alimento alimento = entry.getValue();
-        System.out.println("Nome: " + alimento.getNome());
-        System.out.println("Carboidrato: " + alimento.getCarboidrato() + "g");
-        System.out.println("Proteína: " + alimento.getProteina() + "g");
-        System.out.println("Gordura: " + alimento.getGordura() + "g");
-        System.out.println("Calorias: " + alimento.getTotalCaloria() + " kcal");
-        System.out.println();
-      }
-    }
-  }
-
   public Alimento buscarAlimentoPeloNome(String nomeAlimento) {
     return alimentosCadastrados.get(nomeAlimento);
+  }
+
+  private float calcularCaloria(float kcal, float quantidade) {
+    return kcal * quantidade;
   }
 }

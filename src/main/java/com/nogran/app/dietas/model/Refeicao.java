@@ -1,6 +1,5 @@
 package com.nogran.app.dietas.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -14,7 +13,6 @@ public class Refeicao {
 
   private String nome;
   private List<Alimento> alimentos;
-  private double totalCalorias;
+  private float totalCalorias;
   private LocalDateTime dataCriacao;
-
 }

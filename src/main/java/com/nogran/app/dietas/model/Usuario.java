@@ -14,14 +14,15 @@ public class Usuario {
 
   private String nome;
   private String email;
+  private String senha;
   private LocalDate dataNascimento;
   private float peso;
   private int altura;
   private String sexo;
   private String objetivo;
-  private float metabolismoBasal;
-  private List<DiarioExercicio> diarioExercicios;
   private List<Refeicao> refeicoes;
+  private Metabolismo metabolismo;
   private LocalDateTime dataCriacao;
+  private LocalDateTime dataAtualizacao;
 
 }
