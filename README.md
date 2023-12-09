@@ -2,15 +2,16 @@
 
 Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida mais saudável e equilibrada! Este aplicativo incrível foi desenvolvido para tornar a sua experiência de dieta divertida, motivadora e eficaz. Prepare-se para embarcar em uma jornada transformadora rumo ao seu melhor eu!
 
-## 🌟 Recursos Incríveis
+## 🌟 Recursos
 
 ### 📅 Planejamento Personalizado
 - Crie planos de dieta personalizados com base nos seus objetivos.
 - Estabeleça metas realistas e atinja resultados surpreendentes.
 
 ### 🥗 Banco de Receitas Saudáveis
-- Explore uma variedade de receitas deliciosas e saudáveis.
+- Explore uma variedade de receitas deliciosas e saudáveis, elaboradas por outros usuários.
 - Adicione facilmente os ingredientes ao seu planejamento diário.
+- Crie novas receitas deliciosas e compartilhe com seus amigos.
 
 ### 🏋️‍♂️ Rotinas de Exercícios
 - Acesse rotinas de exercícios adaptadas às suas preferências e nível de condicionamento físico.
@@ -20,73 +21,58 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 - Visualize seu progresso através de gráficos intuitivos.
 - Mantenha-se motivado com estatísticas detalhadas sobre suas conquistas.
 
-### 🛒 Lista de Compras Inteligente
-- Simplifique suas compras com uma lista inteligente baseada no seu plano de dieta.
-- Economize tempo e dinheiro enquanto mantém uma despensa saudável.
+## Funcionalidades
 
-## Módulos
-
-### 1. Cadastro
+### 1. Usuário
 - Cadastrar Usuário
 - Gerenciar Perfil
 
 ### 2. Alimentos
-- Pesquisar Alimentos
-- Adicionar Alimento
-- Registrar Refeição
+- Adicionar Alimentos
+- Gerenciar Alimentos
+- Calcular Calorias
 
 ### 3. Refeições
-- Gerenciar Refeição
-- Visualizar Refeição
+- Adicionar Refeições
+- Gerenciar Refeições
+- Calcular Calorias
 
-### 4. Informações Nutricionais
-- Acompanhar Calorias
-- Monitorar Nutrientes
-
-### 5. Exercícios
+### 4. Exercícios
 - Adicionar Exercício
 - Registrar Atividade Física
+- Calcular Gasto Calórico
 
-### 6. Metabolismo
+### 5. Metabolismo
 - Ajustar Metabolismo
 - Calcular Taxa Metabólica Basal (TMB)
+
+### 6. Informações Nutricionais
+- Acompanhar Calorias
+- Monitorar Macronutrientes
 
 ### 7. Relatórios
 - Gerar Relatórios
 - Visualizar Progresso
 
-### 8. Notificações
-- Configurar Notificações
-- Lembretes
+## Backlog
 
-### 9. Comunidade
-- Fórum de Discussão
-- Compartilhar Conquistas
-
-### 10. Integrações
-- Integração com Dispositivos
-- Conectar a Apps de Saúde
-
-### 11. Segurança
+### 8. Segurança
 - Autenticação
 - Privacidade dos Dados
 
-```mermaid
-graph TD
+### 9. Comunidade
+- Compartilhar Conquistas
+- Postar refeições e receitas saudáveis
+- Criar grupos de trabalho e amigos para compartilhar progresso
 
-Cadastrar_Usuario --> Alimentos
-Cadastrar_Usuario --> Refeicoes
-Cadastrar_Usuario --> Metabolismo
-Cadastrar_Usuario --> Exercicios
-Cadastrar_Usuario --> Relatorios
+### 10. Notificações
+- Configurar Notificações
+- Lembretes
 
-Alimentos --> Refeicoes
-Alimentos --> Metabolismo
+### 11. Integrações
+- Integração com Dispositivos
+- Conectar a Apps de Saúde
 
-Refeicoes --> Metabolismo
-
-Exercicios --> Metabolismo
-
-Metabolismo --> Relatorios
-
-```
+### 12. Lista de Compras Inteligente
+- Simplifique suas compras com uma lista inteligente ajustada ao seu plano de dieta.
+- Economize tempo e dinheiro, mantendo uma despensa saudável e alinhada com suas escolhas alimentares.
