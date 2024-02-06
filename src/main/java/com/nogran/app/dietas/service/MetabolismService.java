@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 
 @Service
 @AllArgsConstructor
-public class MetabolismoService {
+public class MetabolismService {
 
     public float calcularMetabolismoBasal(
             LocalDate dataNascimento, String sexo, float peso, float altura) {

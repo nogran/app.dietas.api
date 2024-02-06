@@ -28,7 +28,7 @@ Bem-vindo ao AppDietas, o seu parceiro de confiança na jornada para uma vida ma
 - Gerenciar perfil de usuário
 
 ### 🍏 **Alimentos**
-- Adicionar alimento
+- Adicionar food
 - Gerenciar lista de alimentos
 - Calcular calorias
 

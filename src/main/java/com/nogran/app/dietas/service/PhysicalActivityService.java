@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class ExercicioService {
+public class PhysicalActivityService {
 
   public float calcularGastoCalorico(float met, float peso, int tempo) {
     return met * peso * tempo / 60;

@@ -8,9 +8,9 @@ import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
-public class Metabolismo {
+public class Metabolism {
 
-  private float taxaMetabolicaBasal;
-  private float consumoMetabolico;
-  private LocalDateTime dataCriacao;
+  private float basalMetabolicRate;
+  private float metabolicRate;
+  private LocalDateTime createdAt;
 }
