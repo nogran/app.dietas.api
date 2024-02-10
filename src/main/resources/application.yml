@@ -1,9 +1,16 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/appdietas?autoReconnect=true&useSSL=false
+    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB:postgres}
     username: postgres
-    password: postgres
+    password: password
+    driverClassName: org.postgresql.Driver
+    hikari:
+      schema: app_dietas
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
     show-sql: true
+  flyway:
+    enabled: true
+    schemas: app_dietas
+    baselineOnMigrate: true
