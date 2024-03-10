@@ -1,15 +1,15 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB:postgres}
-    username: postgres
-    password: password
-    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_SERVER:localhost}:${DB_PORT:5432}/${POSTGRES_DB:postgres}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:password}
     hikari:
       schema: app_dietas
   jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
   flyway:
     enabled: true
     schemas: app_dietas
