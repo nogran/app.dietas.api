@@ -1,6 +1,7 @@
 package com.nogran.app.dietas.service.impl;
 
-import com.nogran.app.dietas.mapstruct.FoodMapper;
+import com.nogran.app.dietas.exception.FoodDuplicatedException;
+import com.nogran.app.dietas.mapper.FoodMapper;
 import com.nogran.app.dietas.model.Food;
 import com.nogran.app.dietas.repository.FoodRepository;
 import com.nogran.app.dietas.service.FoodService;
@@ -20,14 +21,14 @@ public class FoodServiceImpl implements FoodService {
     return mapper.entityToModel(repository.findAll());
   }
 
-  //  public Food save(String name) {
-  //    var optFood = findByName(name);
-  //    if (optFood.isEmpty()) {
-  //      throw new FoodNotFoundException(name);
-  //    }
-  //    return repository.save(optFood.get());
-  //  }
-  //
+  public Food create(Food food) {
+    var optFood = repository.findByName(food.getName());
+    if (optFood.isPresent()) {
+      throw new FoodDuplicatedException(food.getName());
+    }
+    return mapper.entityToModel(repository.save(mapper.modelToEntity(food)));
+  }
+
   //  public void remove(String name) {
   //    var optFood = findByName(name);
   //    if (optFood.isEmpty()) {

@@ -1,10 +1,9 @@
-package com.nogran.app.dietas.model;
+package com.nogran.app.dietas.dto.response;
 
 import lombok.Data;
 
 @Data
-public class Food {
-
+public class FoodResponseDTO {
   private String name;
 
   private float grams;
