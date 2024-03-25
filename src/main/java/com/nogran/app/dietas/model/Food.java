@@ -5,15 +5,17 @@ import lombok.Data;
 @Data
 public class Food {
 
-  private String name;
+    private String name;
 
-  private float grams;
+    private String company;
 
-  private float carbohydrate;
+    private float grams;
 
-  private float protein;
+    private float carbohydrate;
 
-  private float fat;
+    private float protein;
 
-  private float totalCalories;
+    private float fat;
+
+    private float totalCalories;
 }

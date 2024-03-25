@@ -9,6 +9,8 @@ public class CreateFoodRequestDTO {
   @NotNull
   private String name;
 
+  private String company;
+
   @NotNull
   private float grams;
 
