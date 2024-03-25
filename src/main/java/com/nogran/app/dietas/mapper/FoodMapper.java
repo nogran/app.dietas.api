@@ -4,24 +4,26 @@ import com.nogran.app.dietas.dto.request.CreateFoodRequestDTO;
 import com.nogran.app.dietas.dto.response.FoodResponseDTO;
 import com.nogran.app.dietas.model.Food;
 import com.nogran.app.dietas.model.entity.FoodEntity;
-import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+
+import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface FoodMapper {
 
-  FoodMapper INSTANCE = Mappers.getMapper(FoodMapper.class);
+    FoodMapper INSTANCE = Mappers.getMapper(FoodMapper.class);
 
-  Food entityToModel(FoodEntity entity);
+    Food entityToModel(FoodEntity entity);
 
-  List<Food> entityToModel(List<FoodEntity> entities);
+    List<Food> entityToModel(List<FoodEntity> entities);
 
-  FoodEntity modelToEntity(Food food);
+    FoodEntity modelToEntity(Food food);
 
-  FoodResponseDTO toResponse(Food food);
+    FoodResponseDTO toResponse(Food food);
 
-  List<FoodResponseDTO> toResponse(List<Food> foods);
+    List<FoodResponseDTO> toResponse(List<Food> foods);
 
-  Food createRequestToDomain(CreateFoodRequestDTO requestDTO);
+    Food createRequestToDomain(CreateFoodRequestDTO requestDTO);
+
 }

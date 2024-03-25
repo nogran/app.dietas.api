@@ -4,7 +4,12 @@ import com.nogran.app.dietas.model.Food;
 import java.util.List;
 
 public interface FoodService {
-  List<Food> findAll();
 
-  Food create(Food food);
+    List<Food> findAll();
+
+    List<Food> findByNameStartsWithIgnoreCase(String name);
+
+    Food create(Food food);
+
+    void delete(String name);
 }
